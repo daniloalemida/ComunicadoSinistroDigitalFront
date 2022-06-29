@@ -1,0 +1,8 @@
+<div fxLayout="row" fxFlexAlign="center" fxLayoutGap="16px" [class]="data.snackType">
+  <div [ngClass]="data.snackType === 'success' ? 'icon-circle' : ''" fxFlexAlign="center">
+    <mat-icon>{{ getIcon }}</mat-icon>
+  </div>
+  <div>
+    <span>{{ data.message }}</span>
+  </div>
+</div>

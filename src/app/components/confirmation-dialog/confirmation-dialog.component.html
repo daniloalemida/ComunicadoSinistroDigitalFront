@@ -1,0 +1,11 @@
+<h1 mat-dialog-title>{{ data.title }}</h1>
+<div mat-dialog-content>{{ data.description }}</div>
+<div
+  fxLayout="row"
+  fxLayoutGap="16px"
+  mat-dialog-actions
+  fxLayoutAlign="end end"
+>
+  <button mat-button mat-outlined-button (click)="close(false)" class="outlined-green-btn">Não</button>
+  <button mat-button mat-flat-button (click)="close(true)" class="dark-green-btn">Sim</button>
+</div>

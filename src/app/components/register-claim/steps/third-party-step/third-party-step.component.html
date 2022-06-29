@@ -1,0 +1,187 @@
+<form [formGroup]="thirdPartyForm">
+  <h2>Houve envolvimento de <span class="bold">terceiros?</span></h2>
+  <mat-radio-group
+    fxLayout="row"
+    fxLayoutGap="24px"
+    fxLayout.xs="column"
+    fxLayoutGap.xs="24px"
+    [disabled]="filledMode"
+    fxLayoutGap.lt-xl="24px"
+    formControlName="terceiroEnvolvido"
+    (change)="selectInvolviment($event.value)"
+    >
+    <mat-radio-button
+      disableRipple
+      [value]="true"
+    >
+      <div>
+        Sim
+      </div>
+    </mat-radio-button>
+    <mat-radio-button
+      disableRipple
+      [value]="false"
+    >
+      <div>
+        Não
+      </div>
+    </mat-radio-button>
+  </mat-radio-group>
+  <br>
+  <div *ngIf="thirdPartyForm.value.terceiroEnvolvido == true">
+    <h3 class="grey-txt">Quem foi o <span class="bold">responsável</span> pelo sinistro?</h3>
+    <mat-radio-group
+      fxLayout="row"
+      fxLayoutGap="24px"
+      fxLayout.xs="column"
+      fxLayoutGap.xs="24px"
+      [disabled]="filledMode"
+      fxLayoutGap.lt-xl="24px"
+      formControlName="terceiroResponsavel"
+    >
+      <mat-radio-button
+        disableRipple
+        [value]="false"
+      >
+        <div>
+          Responsável pelo carro
+        </div>
+      </mat-radio-button>
+      <mat-radio-button
+        disableRipple
+        [value]="true"
+      >
+        <div>
+          Terceiro
+        </div>
+      </mat-radio-button>
+    </mat-radio-group>
+    <br>
+    <h3 class="grey-txt">Autoriza atendimento (pela seguradora) ao terceiro envolvido?</h3>
+    <mat-radio-group
+      fxLayout="row"
+      fxLayoutGap="24px"
+      fxLayout.xs="column"
+      fxLayoutGap.xs="24px"
+      [disabled]="filledMode"
+      fxLayoutGap.lt-xl="24px"
+      formControlName="autorizoSeguro"
+    >
+      <mat-radio-button
+        disableRipple
+        [value]="true"
+      >
+        <div>
+          Sim
+        </div>
+      </mat-radio-button>
+      <mat-radio-button
+        disableRipple
+        [value]="false"
+      >
+        <div>
+          Não
+        </div>
+      </mat-radio-button>
+    </mat-radio-group>
+    <br>
+    <h3 class="grey-txt">Você possui alguma informação <span class="bold">do terceiro?</span></h3>
+    <mat-radio-group
+      fxLayout="row"
+      fxLayoutGap="24px"
+      fxLayout.xs="column"
+      fxLayoutGap.xs="24px"
+      [disabled]="filledMode"
+      fxLayoutGap.lt-xl="24px"
+      formControlName="terceiroIdentificado"
+      (change)="selectThirdIdentified($event.value)"
+    >
+      <mat-radio-button
+        disableRipple
+        [value]="true"
+      >
+        <div>
+          Sim
+        </div>
+      </mat-radio-button>
+      <mat-radio-button
+        disableRipple
+        [value]="false"
+      >
+        <div>
+          Não
+        </div>
+      </mat-radio-button>
+    </mat-radio-group>
+    <br>
+    <div
+      fxLayout="column"
+      fxLayoutGap="8px"
+      fxLayoutGap.xs="8px"
+      fxLayoutGap.lt-xl="8px"
+      *ngIf="thirdPartyForm.value.terceiroIdentificado == true"
+    >
+    <h3 class="grey-txt">Por favor, preencha as informações a seguir caso precisemos entrar em contato com o terceiro.</h3>
+      <div
+        fxLayout="row"
+        fxLayoutGap="16px"
+        fxLayout.xs="column"
+        fxLayout.md="column"
+        fxLayoutGap.xs="16px"
+        fxLayoutGap.lt-xl="16px"
+        class="third-party-form"
+        
+      >
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>Nome</mat-label>
+          <input
+            matInput
+            formControlName="nome"
+            [readonly]="filledMode"
+          >
+          <mat-icon matSuffix mat-icon-button>
+            face
+          </mat-icon>
+          <mat-error>
+            <app-form-error [control]="thirdPartyForm.get('nome')"></app-form-error>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>Telefone</mat-label>
+          <input
+            matInput
+            [readonly]="filledMode"
+            mask="(00) 0 0000-0000"
+            formControlName="telefone"
+          >
+          <mat-icon matSuffix mat-icon-button>
+            call
+          </mat-icon>
+          <mat-error>
+            <app-form-error [control]="thirdPartyForm.get('telefone')"></app-form-error>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field floatLabel="always" appearance="outline">
+          <mat-label>Placa do carro</mat-label>
+          <input
+            matInput
+            [readonly]="filledMode"
+          >
+          <mat-icon matSuffix mat-icon-button>
+            directions_car
+          </mat-icon>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="end center">
+    <button matStepperPrevious mat-flat-button class="text-btn">
+      <mat-icon>arrow_back</mat-icon>
+      VOLTAR
+    </button>
+    <button matStepperNext [disabled]="thirdPartyForm.invalid" mat-flat-button class="text-btn">
+      PRÓXIMO
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </div>
+</form>

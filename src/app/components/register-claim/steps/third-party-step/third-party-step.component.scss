@@ -1,0 +1,17 @@
+.third-party-form {
+  flex-wrap: wrap;
+  mat-form-field {
+    min-width: 250px
+  }
+}
+.mat-radio-button {
+  min-width: 215px;
+  border: 1px solid rgb(167, 166, 166);
+  border-radius: 4px;
+  padding: 16px;
+}
+
+::ng-deep .mat-radio-label-content {
+  padding-left: 16px !important;
+  width: 75%;
+}

@@ -1,0 +1,38 @@
+<h2>Você pode enviar fotos da avarias <span class="bold">do veículo</span></h2>
+<form
+  fxLayout="column"
+  fxLayoutGap="8px"
+  fxLayoutGap.xs="8px"
+  fxLayoutGap.lt-xl="8px"
+>
+  <div
+    fxLayout="row"
+    fxLayoutGap="16px"
+    class="upload-list"
+    fxLayoutGap.lt-xl="16px"
+  >
+    <div *ngFor="let image of uploadedImages; let i = index" class="image">
+      <div (click)="deleteImg(i)" class="delete-icon">
+        <mat-icon>cancel</mat-icon>
+      </div>
+      <img [src]="image.src">
+    </div>
+    <div class="upload-input" [class.disabledUpload]="filledMode">
+      <label for="vehicle-upload-input">
+        <mat-icon>add_a_photo</mat-icon>
+        Adicionar foto
+      </label>
+      <input [disabled]="filledMode" (change)="onFileChange($event)" type="file" name="photo" id="vehicle-upload-input" />
+    </div>
+  </div>
+</form>
+<div fxLayout="row" fxLayoutAlign="end center">
+  <button matStepperPrevious mat-flat-button class="text-btn">
+    <mat-icon>arrow_back</mat-icon>
+    VOLTAR
+  </button>
+  <button matStepperNext mat-flat-button class="text-btn">
+    PRÓXIMO
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</div>

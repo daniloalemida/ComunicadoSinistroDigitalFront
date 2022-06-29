@@ -1,0 +1,67 @@
+<form [@inOutAnimation] [formGroup]="registerForm">
+  <div fxLayout="column" fxLayoutGap="8px" class="form">
+    <mat-icon (click)="back()">arrow_back_ios</mat-icon>
+    <h3>Insira seus dados nos campos abaixo para efetuar seu cadastro. </h3>
+    <mat-form-field floatLabel="always" appearance="outline">
+      <mat-label>Nome</mat-label>
+      <input matInput formControlName="nome" type="text"
+        placeholder="Digite o seu nome.">
+      <mat-error>
+        <app-form-error [control]="registerForm.get('nome')"></app-form-error>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field floatLabel="always" appearance="outline">
+      <mat-label>Email</mat-label>
+      <input matInput formControlName="email" type="text"
+        placeholder="Digite o seu email.">
+      <mat-error>
+        <app-form-error [control]="registerForm.get('email')"></app-form-error>
+      </mat-error>
+    </mat-form-field>
+    <mat-form-field floatLabel="always" appearance="outline">
+      <mat-label>CPF</mat-label>
+      <input mask="000.000.000-00" matInput formControlName="cpf" type="text"
+        placeholder="Digite o seu CPF.">
+      <mat-error>
+        <app-form-error [control]="registerForm.get('cpf')"></app-form-error>
+      </mat-error>
+    </mat-form-field>
+    <div fxLayout="row" fxLayoutGap="8px" class="form">
+      <mat-form-field style="width: 49%;" floatLabel="always" appearance="outline">
+        <mat-label>Celular</mat-label>
+        <input mask="(00) 0 0000-0000" matInput formControlName="celular" type="text"
+          placeholder="Digite o seu celular.">
+        <mat-error>
+          <app-form-error [control]="registerForm.get('celular')"></app-form-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field style="width: 49%;" floatLabel="always" appearance="outline">
+        <mat-label>Data de nascimento</mat-label>
+        <input mask="00/00/0000" [dropSpecialCharacters]="false" matInput formControlName="data_nasc" type="text"
+          placeholder="00/00/0000">
+        <mat-error>
+          <app-form-error [control]="registerForm.get('data_nasc')"></app-form-error>
+        </mat-error>
+      </mat-form-field>
+    </div>
+    <mat-form-field floatLabel="always" appearance="outline">
+      <mat-label>Senha</mat-label>
+      <input matInput formControlName="senha" type="text"
+        placeholder="Digite a sua senha.">
+      <mat-error>
+        <app-form-error [control]="registerForm.get('senha')"></app-form-error>
+      </mat-error>
+    </mat-form-field>
+    <div class="actions">
+      <button
+        mat-button
+        mat-flat-button
+        (click)="register()"
+        class="dark-green-btn"
+        [disabled]="registerForm.invalid"
+      >
+        CADASTRAR
+      </button>
+    </div>
+  </div>
+</form>

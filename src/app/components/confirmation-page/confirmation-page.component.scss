@@ -1,0 +1,39 @@
+.container {
+  padding: 64px;
+  .register-id {
+    border: 1px grey dashed;
+    border-radius: 10px;
+    padding: 16px;
+    display: flex;
+    .icon {
+      align-items: center;
+      display: flex;
+      justify-content: center;
+      mat-icon {
+        color: green;
+        font-size: 40px;
+        width: 40px;
+        height: 40px;
+        padding: 16px;
+      }
+    }
+    .text {
+      display: flex;
+      justify-content: center;
+      flex-direction: column;
+      .title {
+        font-size: 20px;
+        margin-bottom: 8px;
+      }
+      .cod {
+        font-weight: bold;
+        font-size: 25px;
+        color: green;
+      }
+    }
+  }
+
+  .description {
+    margin-top: 24px;
+  }
+}

@@ -1,0 +1,21 @@
+
+::ng-deep .mat-snack-bar-container {
+  color: white !important;
+}
+
+::ng-deep .mat-snack-bar-container.error, .error {
+  background-color: #f34434;
+}
+
+::ng-deep .mat-snack-bar-container.info, .info {
+  background-color: #2494f3;
+}
+
+::ng-deep .mat-snack-bar-container.warn, .warn {
+  background-color: #fb9c06;
+}
+
+::ng-deep .mat-snack-bar-container.success, .success {
+  background-color: #007a33;
+}
+

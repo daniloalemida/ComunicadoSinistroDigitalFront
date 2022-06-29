@@ -1,0 +1,49 @@
+<div class="container">
+  <h1>Abertura de Sinistro</h1>
+  <mat-stepper #stepper [class.linear]="!filledMode" [linear]="!filledMode" orientation="vertical">
+    <mat-step>
+      <ng-template matStepLabel>Informações</ng-template>
+      <app-info-step [registerClaimFill]="registerClaimFill" [filledMode]="filledMode" (selectContract)="selectContract($event)" [dados]="dados"></app-info-step>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Informação do responsável</ng-template>
+      <app-responsible-info-step [registerClaimFill]="registerClaimFill" [filledMode]="filledMode" [selectedContract]="selectedContract" [dados]="dados"></app-responsible-info-step>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Informação do sinistro</ng-template>
+      <app-claim-info-step [registerClaimFill]="registerClaimFill" [filledMode]="filledMode"></app-claim-info-step>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Terceiros</ng-template>
+      <app-third-party-step [registerClaimFill]="registerClaimFill" [filledMode]="filledMode"></app-third-party-step>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Local do sinistro</ng-template>
+      <app-claim-location-step [registerClaimFill]="registerClaimFill" [filledMode]="filledMode"></app-claim-location-step>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Boletim de ocorrência</ng-template>
+      <app-incident-report-step [registerClaimFill]="registerClaimFill" [filledMode]="filledMode"></app-incident-report-step>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Fotos do carro sinistrado</ng-template>
+      <app-vehicle-photos-step [registerClaimFill]="registerClaimFill" [filledMode]="filledMode"></app-vehicle-photos-step>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Agendamento do reboque</ng-template>
+      <app-schedule-step [registerClaimFill]="registerClaimFill" [filledMode]="filledMode"></app-schedule-step>
+    </mat-step>
+
+    <mat-step>
+      <ng-template matStepLabel>Termo de responsabilidade</ng-template>
+      <app-responsibility-statement-step [registerClaimFill]="registerClaimFill" [filledMode]="filledMode" (sendRegister)="sendRegister()"></app-responsibility-statement-step>
+    </mat-step>
+  </mat-stepper>
+</div>

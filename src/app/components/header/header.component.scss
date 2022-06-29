@@ -1,0 +1,16 @@
+.header {
+  display: flex;
+  align-items: center;
+  background-color: #005226;
+  height: 7%;
+  img {
+    max-width: 100px;
+    margin-left: 16px;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .header {
+    display: none;
+  }
+}

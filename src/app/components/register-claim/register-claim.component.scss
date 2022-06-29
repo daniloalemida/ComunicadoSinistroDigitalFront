@@ -1,0 +1,29 @@
+.container {
+  padding: 64px;
+  h1 {
+    color: #004a34;
+    font-weight: bold;
+  }
+  h2 {
+    color: #004a34;
+  }
+}
+
+::ng-deep .no-padding {
+  .mat-form-field-wrapper {
+    padding-bottom: 0;
+  }
+  p {
+    margin: 0;
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .container {
+    padding: 32px 24px;
+  }
+}
+
+::ng-deep .linear .mat-vertical-stepper-header{
+  pointer-events: none !important;
+}

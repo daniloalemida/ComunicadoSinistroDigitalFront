@@ -1,0 +1,20 @@
+<h2>Termo de <span class="bold">responsabilidade</span></h2>
+<p>Assumo, sob as penas da (em acordo com) a lei (Art. 299 do Código Penal), integral responsabilidade pelas declarações e informações que prestei neste Relatório de Sinistro, declarando expressamente serem 
+  verídicos e autorizo a Popz Car a utilizar este documento, judicial e extrajudicialmente.</p>
+  
+<p>Conforme exigência da seguradora PGZSEG (item  3. A da apólice de seguros), bem como da PPSEP, comprometo-me a entregar o boletim de ocorrência ou protocolo no prazo de 48 horas, contadas a partir da data do sinistro. </p>
+  
+<p>A não apresentação do BO ou do Protocolo implicará na perda da cobertura de seguro e, portanto,  na minha aceitação em efetuar o pagamento do valor total do sinistro, mediante emissão de cobrança bancária ou débito no cartão de crédito, conforme cláusula contratual (Cláusula 6.5.4 - das Condições Gerais do Contrato) e arcar integralmente com eventual danos a terceiros.</p>
+
+<mat-checkbox [disabled]="filledMode" [(ngModel)]="checkTerms">Li e concordo com o termo acima.</mat-checkbox>
+
+<div fxLayout="row" fxLayoutAlign="end center">
+  <button matStepperPrevious mat-flat-button class="text-btn">
+    <mat-icon>arrow_back</mat-icon>
+    VOLTAR
+  </button>
+  <button *ngIf="!registerClaimFill?.boEnviado" (click)="sendRegister.emit()" [disabled]="!checkTerms" matStepperNext mat-flat-button class="text-btn">
+    FINALIZAR
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</div>

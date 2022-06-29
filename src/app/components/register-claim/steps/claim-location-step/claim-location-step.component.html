@@ -1,0 +1,121 @@
+<h2>Onde <span class="bold">aconteceu?</span></h2>
+<p class="grey-txt">Informe para gente o endereço onde aconteceu o sinistro.</p>
+<form
+  fxLayout="column"
+  fxLayoutGap="8px"
+  fxLayoutGap.xs="8px"
+  fxLayoutGap.lt-xl="8px"
+  [formGroup]="claimLocationFormGroup"
+>
+<div
+  fxLayout="row"
+  fxLayoutGap="8px"
+  fxLayout.xs="column"
+  fxLayoutGap.xs="8px"
+  fxLayoutGap.lt-xl="8px"
+>
+  <mat-form-field class="no-padding" floatLabel="always" appearance="outline">
+    <mat-label>CEP</mat-label>
+    <input
+      matInput
+      mask="00000-000"
+      formControlName="cep"
+      [readonly]="filledMode"
+      (blur)="consultaCep($event)"
+    >
+    <mat-error>
+      <app-form-error [control]="claimLocationFormGroup.get('cep')"></app-form-error>
+    </mat-error>
+  </mat-form-field>
+</div>
+<mat-form-field floatLabel="always" appearance="outline">
+  <mat-label>Endereço (Rua, Avenida, Rodovia)</mat-label>
+  <input
+    required
+    matInput
+    [readonly]="filledMode"
+    formControlName="logradouro"
+  >
+  <mat-error>
+    <app-form-error [control]="claimLocationFormGroup.get('logradouro')"></app-form-error>
+  </mat-error>
+</mat-form-field>
+<mat-form-field floatLabel="always" appearance="outline">
+  <mat-label>Bairro</mat-label>
+  <input
+    matInput
+    required
+    [readonly]="filledMode"
+    formControlName="bairro"
+  >
+  <mat-error>
+    <app-form-error [control]="claimLocationFormGroup.get('bairro')"></app-form-error>
+  </mat-error>
+</mat-form-field>
+<div
+  fxLayout="row"
+  fxLayoutGap="8px"
+  fxLayoutGap.lt-xl="8px"
+>
+  <mat-form-field style="width: 50%" floatLabel="always" appearance="outline">
+    <mat-label>Número</mat-label>
+    <input
+      matInput
+      required
+      [readonly]="filledMode"
+      formControlName="numero"
+    >
+    <mat-error>
+      <app-form-error [control]="claimLocationFormGroup.get('numero')"></app-form-error>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field style="width: 50%" floatLabel="always" appearance="outline">
+    <mat-label>Complemento</mat-label>
+    <input
+      matInput
+      [readonly]="filledMode"
+      formControlName="complemento"
+    >
+  </mat-form-field>
+</div>
+<div
+  fxLayout="row"
+  fxLayoutGap="8px"
+  fxLayoutGap.lt-xl="8px"
+>
+  <mat-form-field style="width: 50%" floatLabel="always" appearance="outline">
+    <mat-label>Cidade</mat-label>
+    <input
+      matInput
+      required
+      [readonly]="filledMode"
+      formControlName="cidade"
+    >
+    <mat-error>
+      <app-form-error [control]="claimLocationFormGroup.get('cidade')"></app-form-error>
+    </mat-error>
+  </mat-form-field>
+  <mat-form-field style="width: 50%" floatLabel="always" appearance="outline">
+    <mat-label>Estado</mat-label>
+    <input
+      matInput
+      required
+      formControlName="uf"
+      [readonly]="filledMode"
+    >
+    <mat-error>
+      <app-form-error [control]="claimLocationFormGroup.get('uf')"></app-form-error>
+    </mat-error>
+  </mat-form-field>
+</div>
+</form>
+<div fxLayout="row" fxLayoutAlign="end center">
+  <button matStepperPrevious mat-flat-button class="text-btn">
+    <mat-icon>arrow_back</mat-icon>
+    VOLTAR
+  </button>
+  <button [disabled]="claimLocationFormGroup.invalid" matStepperNext mat-flat-button class="text-btn">
+    PRÓXIMO
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</div>

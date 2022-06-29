@@ -1,0 +1,54 @@
+<div class="container">
+  <div class="bg" fxLayout="column">
+    <img src="../../assets/img/img-banner-top-edit3.png" alt="">
+  </div>
+  <div class="div-form" fxLayout="column" fxLayoutAlignment="end center">
+    <div class="form">
+      <form [@inOutAnimation] *ngIf="!registerView" [formGroup]="loginForm">
+        <div style="width: 100%;" fxLayout="column" fxLayoutGap="8px" >
+          <h3>Insira seus dados nos campos abaixo para ter acesso à área de Sinistro. </h3>
+          <mat-form-field floatLabel="always" appearance="outline">
+            <mat-label>CPF</mat-label>
+            <input mask="000.000.000-00" matInput formControlName="cpf" type="text"
+              placeholder="Digite o seu CPF.">
+              <mat-error>
+                <app-form-error [control]="loginForm.get('cpf')"></app-form-error>
+              </mat-error>
+          </mat-form-field>
+          <mat-form-field floatLabel="always" appearance="outline">
+            <mat-label>Senha</mat-label>
+            <input
+              matInput
+              formControlName="senha"
+              placeholder="Digite a sua senha."
+              [type]="showPassword ? 'text' : 'password'"
+            >
+            <mat-icon style="cursor: pointer;" (click)="togglePassword()" matSuffix mat-icon-button>
+              {{ showPassword ? 'visibility' : 'visibility_off' }}
+            </mat-icon>
+            <mat-error>
+              <app-form-error [control]="loginForm.get('senha')"></app-form-error>
+            </mat-error>
+          </mat-form-field>
+          <div class="actions">
+            <button
+              mat-button
+              mat-flat-button
+              (click)="login()"
+              class="dark-green-btn"
+              [disabled]="loginForm.invalid || loading"
+            >
+              <span *ngIf="!loading">ENTRAR</span>
+              <div *ngIf="loading" class="loading">
+                <app-loading-dots [color]="'white'"></app-loading-dots>
+              </div>
+            </button>
+            <!-- <p class="text-btn-underline" (click)="forgotPassword()">Esqueceu a senha?</p> -->
+            <p class="text-btn-underline" (click)="toggleRegister()">Não tem login? Faça seu cadastro.</p>
+          </div>
+        </div>
+      </form>
+      <app-register-form (toggleRegister)="toggleRegister()" *ngIf="registerView"></app-register-form>
+    </div>
+  </div>
+</div>

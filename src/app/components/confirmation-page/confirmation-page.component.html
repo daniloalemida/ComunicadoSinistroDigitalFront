@@ -1,0 +1,27 @@
+<div class="container">
+  <h1>Informações importantes para <span class="bold">você</span>:</h1>
+
+  <div class="register-id">
+    <div class="icon">
+      <mat-icon>check_circle</mat-icon>
+    </div>
+    <div class="text">
+      <span class="title">Protocolo/Número do sinistro</span>
+      <span class="cod">{{ codSinistro }}</span>
+    </div>
+  </div>
+
+  <div class="description grey-txt">
+    <p>Você recebeu o protocolo inicial, e após aprovação do processo, receberá o número oficial do sinistro.</p>
+    <p>Este processo está em análise, podendo ser reprovado. Lembrando que o BO deve ser anexo até 48h contados da data do sinistro.</p>
+    <p>Você sempre receberá o status do processo no e-mail cadastrado;</p>
+    <p>Nosso primeiro contato com você será feito em até 7 dias úteis.</p>
+  </div>
+
+  <div fxLayout="row" fxLayoutAlign="start center">
+    <button [routerLink]="'/home'" mat-flat-button class="dark-green-btn">
+      OK
+      <mat-icon>check</mat-icon>
+    </button>
+  </div>
+</div>

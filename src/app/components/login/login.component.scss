@@ -1,0 +1,102 @@
+.container {
+  height: 93vh;
+  display: flex;
+  justify-content: center;
+  background-color: #00984a;
+  flex-direction: row;
+  background-size: contain;
+  .bg {
+    align-items: center;
+    justify-content: center;
+    background-color: #00984a;
+    // background: #00984a center no-repeat url(../../assets/img/img-banner-top2.png);
+    mix-blend-mode: normal;
+    // opacity: 0.95;
+    background-size: contain;
+    width: 50%;
+    img {
+      width: 95%;
+      max-width: 550px;
+      -webkit-filter: drop-shadow(5px 5px 5px #222222);
+      filter: drop-shadow(10px 15px 20px #222222);
+    }
+  }
+  .div-form {
+    background-color: #00984a;
+    width: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    h3 {
+      margin-bottom: 24px !important;
+    }
+    .form {
+      gap: 16px;
+      overflow: auto;
+      width: 80%;
+      padding: 36px;
+      align-items: center;
+      height: 80%;
+      border-radius: 10px;
+      background-color: #fff;
+      form {
+        height: 100%;
+        display: flex;
+        width: 100%;
+        align-items: center;
+        justify-content: center;
+        mat-label {
+          color: black;
+        }
+      }
+      .actions {
+        width: 100%;
+        button {
+          width: 100%;
+          .loading {
+            height: 37px;
+            align-items: center;
+            width: 100%;
+            justify-content: center;
+            display: flex;
+          }
+        }
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 740px) {
+  .container {
+    height: 100%;
+    flex-direction: column;
+    justify-content: flex-start;
+    .bg {
+      padding-top: 36px;
+      width: 100%;
+      img {
+        position: relative;
+        top: 20px;
+        filter: drop-shadow(25px 15px 20px #222222) drop-shadow(10px 15px 20px rgba(255, 255, 255, 0.637));
+      }
+    }
+    .div-form {
+      -webkit-box-shadow: 0px -4px 9px rgba(50, 50, 50, 0.3);
+      -moz-box-shadow: 0px -4px 9px rgba(50, 50, 50, 0.3);
+      box-shadow: 0px -4px 9px rgba(50, 50, 50, 0.3);
+      border-radius: 10px 10px 0px 0px;
+      background-color: white;
+      height: 100%;
+      width: 100%;
+      .form {
+        justify-content: flex-start;
+      }
+    }
+  }
+}
+
+@media screen and (max-height: 750px) {
+  .container .bg {
+    padding-top: 0px;
+  }
+}

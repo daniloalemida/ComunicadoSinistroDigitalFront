@@ -1,0 +1,77 @@
+.container {
+  height: 100%;
+  h1 {
+    color: #004a34;
+    font-weight: bold;
+  }
+  h2 {
+    color: #004a34;
+  }
+  p {
+    color: #797878;
+  }
+  span {
+    font-weight: bold;
+  }
+  .btn {
+    max-width: 200px;
+  }
+  .open-claim {
+    padding: 64px;
+  }
+  .history {
+    min-height: 100%;
+    padding: 64px;
+    background-color: rgb(185 185 185 / 19%);
+    h2 {
+      display: flex;
+      align-items: center;
+      mat-icon {
+        height: 28px;
+        font-size: 28px;
+        margin-right: 8px;
+      }
+    }
+    .loading {
+      display: flex;
+      justify-content: center;
+    }
+    .empty-history {
+      text-align: center;
+      align-items: center;
+      span {
+        font-size: 19px;
+        color: #01a853;
+        margin: 16px 0;
+      }
+      img {
+        max-width: 400px;
+      }
+    }
+    .history-list {
+      mat-card {
+        margin-bottom: 16px;
+        padding: 32px 32px 8px 32px;
+        mat-card-actions {
+          margin: 0;
+          padding-top: 16px;
+          padding-bottom: 0;
+          border-top: 1px solid rgb(170, 170, 170);
+        }
+      }
+      .title {
+        font-size: 13px;
+        color: #797878;
+        letter-spacing: 1px;
+      }
+      .icon {
+        mat-icon {
+          color: #01a853;
+          font-size: 35px;
+          width: 35px;
+          height: 35px;
+        }
+      }
+    }
+  }
+}

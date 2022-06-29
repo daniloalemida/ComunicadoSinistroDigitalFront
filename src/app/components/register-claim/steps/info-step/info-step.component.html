@@ -1,0 +1,53 @@
+<h2>Novo <span class="bold">aviso de sinistro</span></h2>
+<p class="grey-txt">Verifique se as informações estão corretas antes de prosseguir</p>
+<br>
+<mat-form-field style="width: 100%" floatLabel="always" appearance="outline">
+  <mat-label>Contrato</mat-label>
+  <mat-select
+    [disabled]="filledMode"
+    (ngModelChange)="selectContract.emit($event)"
+    [(ngModel)]="selectedContract"
+  >
+    <mat-option>--</mat-option>
+    <mat-option *ngFor="let contract of dados.dadosContratosAtivos" [value]="contract">
+      {{ contract.veiculoAlugado.marca }} - {{ contract.veiculoAlugado.placa }}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
+<mat-card *ngIf="selectedContract">
+  <mat-card-content>
+    <div fxLayout="column" fxLayoutGap="16px">
+      <span class="bold">Dados do carro</span>
+      <div
+        class="car-info"
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutGap="112px"
+        fxLayoutGap.lt-xl="112px"
+        fxLayoutGap.xs="24px"
+      >
+        <p class="green-txt bold">Placa: {{ selectedContract.veiculoAlugado.placa }}</p>
+        <p class="bold">{{ selectedContract.veiculoAlugado.marca }}</p>
+        <p class="bold">{{ selectedContract.veiculoAlugado.modelo }}
+          {{ selectedContract.veiculoAlugado.ano }}</p>
+      </div>
+      <span class="bold">Dados do cliente</span>
+      <div
+        fxLayout="row"
+        fxLayout.xs="column"
+        fxLayoutGap="112px"
+        fxLayoutGap.lt-xl="112px"
+        fxLayoutGap.xs="24px"
+      >
+      <p class="green-txt bold">{{ selectedContract.cliente.nome }}</p>
+      <p>CPF: <span class="bold">{{ selectedContract.cliente.cpf }}</span></p>
+      </div>
+    </div>
+  </mat-card-content>
+</mat-card>
+<div fxLayout="row" fxLayoutAlign="end center">
+  <button [disabled]="!selectedContract" matStepperNext mat-flat-button class="text-btn">
+    PRÓXIMO
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</div>

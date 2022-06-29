@@ -1,0 +1,191 @@
+<form [formGroup]="scheduleFormGroup">
+  <h2>Você deseja agendar o <span class="bold">reboque do veículo?</span></h2>
+  <mat-radio-group
+    fxLayout="row"
+    fxLayoutGap="24px"
+    fxLayout.xs="column"
+    fxLayoutGap.xs="24px"
+    [disabled]="filledMode"
+    fxLayoutGap.lt-xl="24px"
+    formControlName="agendar"
+    (change)="checkSchedule($event.value)"
+  >
+    <mat-radio-button
+      disableRipple
+      [value]="true"
+    >
+      <div>
+        Sim
+      </div>
+    </mat-radio-button>
+    <mat-radio-button
+      disableRipple
+      [value]="false"
+    >
+      <div>
+        Não
+      </div>
+    </mat-radio-button>
+  </mat-radio-group>
+  <br>
+  <div *ngIf="scheduleFormGroup.value.agendar == true">
+    <h3 class="grey-txt">Preencha as informações para o <span class="bold">agendamento do reboque:</span></h3>
+    <div
+      fxLayout="column"
+      fxLayoutGap="8px"
+      fxLayoutGap.xs="8px"
+      fxLayoutGap.lt-xl="8px"
+    >
+      <div
+        fxLayout="row"
+        fxLayoutGap="8px"
+        fxLayoutGap.lt-xl="8px"
+      >
+        <mat-form-field style="width: 50%" floatLabel="always" appearance="outline">
+          <mat-label>Data</mat-label>
+          <input
+            matInput
+            mask="00/00/0000"
+            formControlName="data"
+            [readonly]="filledMode"
+            placeholder="DD/MM/AAAA"
+          >
+          <mat-icon matSuffix mat-icon-button>
+            event
+          </mat-icon>
+          <mat-error>
+            <app-form-error [control]="scheduleFormGroup.get('data')"></app-form-error>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field style="width: 50%" floatLabel="always" appearance="outline">
+          <mat-label>Hora</mat-label>
+          <input
+            matInput
+            mask="00:00"
+            placeholder="00:00"
+            formControlName="hora"
+            [readonly]="filledMode"
+          >
+          <mat-icon matSuffix mat-icon-button>
+            schedule
+          </mat-icon>
+          <mat-error>
+            <app-form-error [control]="scheduleFormGroup.get('hora')"></app-form-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <div
+        fxLayout="row"
+        fxLayoutGap="8px"
+        fxLayout.xs="column"
+        fxLayoutGap.xs="8px"
+        fxLayoutGap.lt-xl="8px"
+      >
+        <mat-form-field class="no-padding" floatLabel="always" appearance="outline">
+          <mat-label>CEP</mat-label>
+          <input
+            matInput
+            mask="00000-000"
+            formControlName="cep"
+            [readonly]="filledMode"
+            (blur)="consultaCep($event)"
+          >
+          <mat-error>
+            <app-form-error [control]="scheduleFormGroup.get('cep')"></app-form-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <mat-form-field floatLabel="always" appearance="outline">
+        <mat-label>Endereço (Rua, Avenida, Rodovia)</mat-label>
+        <input
+          required
+          matInput
+          required
+          [readonly]="filledMode"
+          formControlName="logradouro"
+        >
+        <mat-error>
+          <app-form-error [control]="scheduleFormGroup.get('logradouro')"></app-form-error>
+        </mat-error>
+      </mat-form-field>
+      <mat-form-field floatLabel="always" appearance="outline">
+        <mat-label>Bairro</mat-label>
+        <input
+          matInput
+          required
+          [readonly]="filledMode"
+          formControlName="bairro"
+        >
+        <mat-error>
+          <app-form-error [control]="scheduleFormGroup.get('bairro')"></app-form-error>
+        </mat-error>
+      </mat-form-field>
+      <div
+        fxLayout="row"
+        fxLayoutGap="8px"
+        fxLayoutGap.lt-xl="8px"
+      >
+        <mat-form-field style="width: 50%" floatLabel="always" appearance="outline">
+          <mat-label>Número</mat-label>
+          <input
+            matInput
+            required
+            [readonly]="filledMode"
+            formControlName="numero"
+          >
+          <mat-error>
+            <app-form-error [control]="scheduleFormGroup.get('numero')"></app-form-error>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field style="width: 50%" floatLabel="always" appearance="outline">
+          <mat-label>Complemento</mat-label>
+          <input
+            matInput
+            [readonly]="filledMode"
+            formControlName="complemento"
+          >
+        </mat-form-field>
+      </div>
+      <div
+        fxLayout="row"
+        fxLayoutGap="8px"
+        fxLayoutGap.lt-xl="8px"
+      >
+        <mat-form-field style="width: 50%" floatLabel="always" appearance="outline">
+          <mat-label>Cidade</mat-label>
+          <input
+            matInput
+            required
+            [readonly]="filledMode"
+            formControlName="cidade"
+          >
+          <mat-error>
+            <app-form-error [control]="scheduleFormGroup.get('cidade')"></app-form-error>
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field style="width: 50%" floatLabel="always" appearance="outline">
+          <mat-label>Estado</mat-label>
+          <input
+            matInput
+            required
+            formControlName="uf"
+            [readonly]="filledMode"
+          >
+          <mat-error>
+            <app-form-error [control]="scheduleFormGroup.get('uf')"></app-form-error>
+          </mat-error>
+        </mat-form-field>
+      </div>
+    </div>
+  </div>
+  <div fxLayout="row" fxLayoutAlign="end center">
+    <button matStepperPrevious mat-flat-button class="text-btn">
+      <mat-icon>arrow_back</mat-icon>
+      VOLTAR
+    </button>
+    <button [disabled]="scheduleFormGroup.invalid" matStepperNext mat-flat-button class="text-btn">
+      PRÓXIMO
+      <mat-icon>arrow_forward</mat-icon>
+    </button>
+  </div>
+</form>

@@ -1,0 +1,42 @@
+<h2>Favor anexar uma imagem (pode ser foto) do <span class="bold">boletim de ocorrência</span></h2>
+<form
+  fxLayout="column"
+  fxLayoutGap="8px"
+  fxLayoutGap.xs="8px"
+  fxLayoutGap.lt-xl="8px"
+>
+  <div
+    fxLayout="row"
+    fxLayoutGap="16px"
+    class="upload-list"
+    fxLayoutGap.lt-xl="16px"
+  >
+    <div *ngFor="let image of uploadedImages; let i = index" class="image">
+      <div (click)="deleteImg(i)" class="delete-icon">
+        <mat-icon>cancel</mat-icon>
+      </div>
+      <img [src]="image.src">
+    </div>
+    <div class="upload-input" [class.disabledUpload]="filledMode && registerClaimFill.boEnviado">
+      <label for="upload-input">
+        <mat-icon>add_a_photo</mat-icon>
+        Adicionar foto
+      </label>
+      <input [disabled]="filledMode && registerClaimFill.boEnviado" (change)="onFileChange($event)" type="file" name="photo" id="upload-input" />
+    </div>
+  </div>
+  <div class="info">
+    Caso o/a cliente não tenha o boletim de ocorrência, informe que deve enviar no prazo de 48h,
+    contadas a partir da data do sinistro
+  </div>
+</form>
+<div fxLayout="row" fxLayoutAlign="end center">
+  <button matStepperPrevious mat-flat-button class="text-btn">
+    <mat-icon>arrow_back</mat-icon>
+    VOLTAR
+  </button>
+  <button matStepperNext mat-flat-button class="text-btn">
+    PRÓXIMO
+    <mat-icon>arrow_forward</mat-icon>
+  </button>
+</div>

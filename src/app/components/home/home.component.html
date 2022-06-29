@@ -1,0 +1,103 @@
+<div class="container">
+  <div class="open-claim">
+    <div>
+      <h1>Sinistros</h1>
+      <p>Além de iniciar a abertura de sinistro, nesta página você também tem acesso a informações de sinistros
+        anteriores.</p>
+    </div>
+    <br>
+    <div>
+      <h2>Abertura de <span>sinistro</span></h2>
+      <p>A abertura de sinistro é feita
+        <span>quando houve uma ocorrência de trânsito envolvendo o carro da sua locação.</span>
+      </p>
+      <p>Para abrir o sinistro, você só vai precisar preencher algumas informações.</p>
+      <div class="btn">
+        <button [routerLink]="'/registerClaim'" mat-button mat-flat-button class="dark-green-btn">
+          ABRIR SINISTRO
+          <mat-icon>chevron_right</mat-icon>
+        </button>
+      </div>
+    </div>
+  </div>
+  <div class="history">
+    <h2>
+      <mat-icon>history</mat-icon> Histórico de sinistros
+    </h2>
+    <div class="history-content">
+      <div *ngIf="loading" class="loading">
+        <app-loading-dots></app-loading-dots>
+      </div>
+      <div *ngIf="sinistros.length == 0 && !loading" fxLayout="column" fxLayoutAlignment="start center" class="empty-history">
+        <img src="../../../assets/img/green-car.png">
+        <span>Oba! Você não tem nenhum sinistro!</span>
+        <p>Não encontramos nenhum sinistro associado aos
+          <br>seus dados, e esperamos que continue assim!
+        </p>
+      </div>
+      <div *ngIf="sinistros.length > 0" class="history-list">
+        <mat-card *ngFor="let sinistro of sinistros">
+          <mat-card-content>
+            <div fxLayout="column" fxLayoutGap="24px">
+              <div
+                fxLayout="row"
+                fxLayout.xs="column"
+                fxLayoutGap="112px"
+                fxLayoutGap.lt-xl="112px"
+                fxLayoutGap.xs="24px"
+              >
+                <div fxLayout="row" fxLayoutGap="13px">
+                  <div class="icon" fxLayout="column">
+                    <mat-icon>local_police</mat-icon>
+                  </div>
+                  <div fxLayout="column">
+                    <span class="title">CÓDIGO DO SINISTRO</span>
+                    <span>{{ sinistro.codSinistro }}</span>
+                  </div>
+                </div>
+                <div fxLayout="column">
+                  <span class="title">CONTRATO</span>
+                  <span>{{ sinistro.codContrato }}</span>
+                </div>
+                <div fxLayout="column">
+                  <span class="title">CONDUTOR</span>
+                  <span>{{ sinistro.condutor?.nome || '-'}}</span>
+                </div>
+              </div>
+              <div
+                fxLayout="row"
+                fxLayout.xs="column"
+                fxLayoutGap="112px"
+                fxLayoutGap.lt-xl="112px"
+                fxLayoutGap.xs="24px"
+              >
+                <div fxLayout="column">
+                  <span class="title">DATA E HORA DO OCORRIDO</span>
+                  <span>{{ sinistro.dataSinistro }}</span>
+                </div>
+                <div fxLayout="column">
+                  <span class="title">PLACA DO CARRO</span>
+                  <span>{{ sinistro.carro.placa }}</span>
+                </div>
+                <div fxLayout="column">
+                  <span class="title">MODELO DO CARRO</span>
+                  <span>{{ sinistro.carro.modelo }}</span>
+                </div>
+              </div>
+            </div>
+          </mat-card-content>
+          <mat-card-actions fxLayout="row" fxLayout.xs="column" align="end">
+            <button [routerLink]="['/registerClaim', sinistro.codSinistro]" mat-flat-button class="text-btn">
+              MAIS DETALHES
+              <mat-icon>visibility</mat-icon>
+            </button>
+            <button [routerLink]="['/registerClaim', sinistro.codSinistro]" mat-flat-button *ngIf="!sinistro.boEnviado" class="dark-green-btn">
+              ANEXAR B.O
+              <mat-icon>attach_file</mat-icon>
+            </button>
+          </mat-card-actions>
+        </mat-card>
+      </div>
+    </div>
+  </div>
+</div>

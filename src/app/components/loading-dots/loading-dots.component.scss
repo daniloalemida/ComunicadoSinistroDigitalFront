@@ -1,0 +1,99 @@
+@import "~src/styles.scss";
+
+.dot-flashing {
+  position: relative;
+  width: 8px;
+  height: 8px;
+  border-radius: 5px;
+  background-color: green;
+  color: green;
+  animation: dotFlashing .7s infinite linear alternate;
+  animation-delay: .3s;
+  &.white {
+    color: rgba(128, 128, 128, 0.5);
+    background-color: rgba(128, 128, 128, 0.5);
+    animation: dotFlashingWhite .7s infinite linear alternate;
+  }
+}
+
+.dot-flashing::before, .dot-flashing::after {
+  content: '';
+  display: inline-block;
+  position: absolute;
+  top: 0;
+}
+
+.dot-flashing::before {
+  left: -15px;
+  width: 8px;
+  height: 8px;
+  border-radius: 5px;
+  background-color: green;
+  color: green;
+  animation: dotFlashing .7s infinite alternate;
+  animation-delay: 0s;
+  &.white {
+    background-color: rgba(128, 128, 128, 0.5);
+    color: rgba(128, 128, 128, 0.5);
+    animation: dotFlashingWhite .7s infinite alternate;
+  }
+}
+
+.dot-flashing.white::before {
+  left: -15px;
+  width: 8px;
+  height: 8px;
+  border-radius: 5px;
+  animation-delay: 0s;
+  background-color: rgba(128, 128, 128, 0.5);
+  color: rgba(128, 128, 128, 0.5);
+  animation: dotFlashingWhite .7s infinite alternate;
+}
+
+.dot-flashing::after {
+  left: 15px;
+  width: 8px;
+  height: 8px;
+  border-radius: 5px;
+  background-color: green;
+  color: green;
+  animation: dotFlashing .7s infinite alternate;
+  animation-delay: .7s;
+  &.white {
+    background-color: rgba(128, 128, 128, 0.5);
+    color: rgba(128, 128, 128, 0.5);
+    animation: dotFlashingWhite .7s infinite alternate;
+  }
+}
+
+.dot-flashing.white::after {
+  left: 15px;
+  width: 8px;
+  height: 8px;
+  border-radius: 5px;
+  animation-delay: .7s;
+  background-color: rgba(128, 128, 128, 0.5);
+  color: rgba(128, 128, 128, 0.5);
+  animation: dotFlashingWhite .7s infinite alternate;
+}
+
+
+@keyframes dotFlashing {
+  0% {
+    background-color: green;
+  }
+  50%,
+  100% {
+    background-color: #09468731;
+  }
+}
+
+@keyframes dotFlashingWhite {
+  0% {
+    background-color: rgba(128, 128, 128, 0.5);
+  }
+  50%,
+  100% {
+    background-color: white;
+  }
+}
